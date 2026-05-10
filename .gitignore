@@ -24,11 +24,9 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (M5 raw + derived) — excluded by default
+# Data — committed for single-SKU demo (FOODS_3_295_CA_1)
 data/raw/*
 !data/raw/.gitkeep
-data/*.duckdb
-data/*.parquet
 data/runs/*
 data/models/*
 data/models/lstm_flat/*
@@ -55,11 +53,9 @@ CLAUDE.md
 *.txt.model
 
 # ──────────────────────────────────────────────────────────────────
-# Demo subset (single-SKU FOODS_3_295_CA_1) — committed for quick start
-# (must come AFTER all general excludes — last match wins in gitignore)
+# Single-SKU demo data — committed so fresh clones run out of the box.
+# (must come AFTER all general excludes — last match wins)
 # ──────────────────────────────────────────────────────────────────
-!data/demo/
-!data/demo/**
 !data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/
 !data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/**
 !data/models/lstm_flat/

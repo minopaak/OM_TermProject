@@ -52,36 +52,22 @@ Python 3.11+ · uv · Windows PowerShell 기준. macOS / Linux 도 동일 명령
 
 ---
 
-## M5 데이터 준비
+## 데이터
 
-### 빠른 시작 (Demo · 권장)
+리포지토리는 단일 SKU `FOODS_3_295_CA_1` 데모로 동작하도록 구성됨. 다음이 이미
+포함됨:
 
-리포지토리에 단일 SKU `FOODS_3_295_CA_1` 의 데이터·캐시·예시 run 이 이미 들어있다
-(`data/demo/`, `data/models/`, `data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/`).
-별도 다운로드 없이 바로 앱·배치 실행 가능. `src/config.py` 가 `data/` 의 풀데이터가
-없으면 `data/demo/` 로 자동 fallback.
+- `data/knowledge_base.duckdb` — 해당 SKU 의 5년 train + 캘린더 + 메타 (~1MB)
+- `data/test_set.parquet` — 2016-01-01 ~ 2016-05-22 정답 28일 (`legend toggle` 표시용)
+- `data/calendar.parquet` — 전체 기간 이벤트·SNAP·요일
+- `data/models/{lstm_flat, arima}/FOODS_3_295_CA_1.{pt, pkl}` — 학습된 baseline 캐시
+- `data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/` — 미리 만들어둔 분석 결과 예시
 
-### 전체 데이터셋 (선택)
+`uv sync` 후 바로 실행 가능. 추가 다운로드 불필요.
 
-전체 30,490 SKU 로 돌리려면 Kaggle [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
-에서 아래 3개 파일을 다운받아 `data/raw/` 에 두고:
-
-- `sales_train_evaluation.csv`
-- `calendar.csv`
-- `sell_prices.csv`
-
-이후 데이터 정제·DuckDB 적재:
-
-```powershell
-.\.venv\Scripts\python.exe -m src.data.prepare
-```
-
-생성물:
-- `data/knowledge_base.duckdb` — `sales_train`, `calendar`, `sell_prices`, `sku_metadata`
-- `data/test_set.parquet` — 2016-01-01 ~ 2016-05-22 held-out actual
-- `data/calendar.parquet`
-
-`data/` 에 풀데이터가 생기면 `data/demo/` 보다 우선 사용된다.
+> 다른 SKU 로 확장하고 싶다면 Kaggle [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
+> 의 `sales_train_evaluation.csv` · `calendar.csv` · `sell_prices.csv` 를 `data/raw/`
+> 에 두고 `python -m src.data.prepare` 로 풀데이터셋을 빌드하면 동일 코드가 30,490 SKU 모두에서 동작.
 
 ---
 

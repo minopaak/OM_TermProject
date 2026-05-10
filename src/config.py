@@ -11,26 +11,9 @@ load_dotenv()
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
-
-
-def _resolve(name: str) -> Path:
-    """Prefer the full dataset under data/; fall back to data/demo/ subset.
-
-    The demo subset (single-SKU FOODS_3_295_CA_1) is committed to the repo
-    so that fresh clones can run the pipeline without rebuilding from M5.
-    Once `src.data.prepare` is run with the M5 CSVs, the full files appear
-    under data/ and take precedence automatically.
-    """
-    full = DATA_DIR / name
-    if full.exists():
-        return full
-    demo = DATA_DIR / "demo" / name
-    return demo  # may not exist either; downstream code handles
-
-
-DUCKDB_PATH = _resolve("knowledge_base.duckdb")
-TEST_PARQUET = _resolve("test_set.parquet")
-CALENDAR_PARQUET = _resolve("calendar.parquet")
+DUCKDB_PATH = DATA_DIR / "knowledge_base.duckdb"
+TEST_PARQUET = DATA_DIR / "test_set.parquet"
+CALENDAR_PARQUET = DATA_DIR / "calendar.parquet"
 
 TRAIN_END_DATE = "2015-12-31"
 TEST_START_DATE = "2016-01-01"
