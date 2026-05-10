@@ -93,9 +93,10 @@ Python 3.11+ · uv · Windows PowerShell 기준. macOS / Linux 도 동일 명령
   *"전체 5% 높여"*) 으로 보정 조작
 - **✅ 최종 컨펌 및 저장** — `data/runs/<run_id>/manager_final/<sku>.parquet`
 
-### B. 배치 실행 (CLI)
+### B. CLI 재실행
 
-여러 SKU 를 한꺼번에 돌리려면:
+대시보드 없이 동일 SKU (`FOODS_3_295_CA_1`, `2016-01-28` 마감) 에 대해 분석을
+다시 돌려 새 run dir 을 만들고 싶다면:
 
 ```powershell
 # 기본 baseline: LSTM
@@ -105,7 +106,7 @@ Python 3.11+ · uv · Windows PowerShell 기준. macOS / Linux 도 동일 명령
 $env:BASELINE_MODEL = "arima"; .\.venv\Scripts\python.exe _e2e_batch_eval.py
 ```
 
-각 SKU 마다 `data/runs/<run_id>/` 에 다음이 저장됨:
+`data/runs/<run_id>/` 에 다음이 저장됨:
 
 | 파일 | 내용 |
 |---|---|
@@ -116,11 +117,8 @@ $env:BASELINE_MODEL = "arima"; .\.venv\Scripts\python.exe _e2e_batch_eval.py
 | `traces/<sku>.jsonl` | LLM 호출 추적 (토큰·비용) |
 | `summary.parquet` / `summary.txt` | run 단위 메트릭 |
 
-per-SKU 평가 breakdown:
-
-```powershell
-.\.venv\Scripts\python.exe _multi_breakdown.py
-```
+> 여러 SKU 를 한 번에 돌리려면 풀데이터셋 빌드 (아래 *데이터* 섹션 끝 참고) 후
+> `_e2e_batch_eval.py` 의 `cases` 리스트에 `BatchCase(...)` 를 추가하면 된다.
 
 ---
 
@@ -129,8 +127,8 @@ per-SKU 평가 breakdown:
 ```
 .
 ├ app.py                       # Streamlit 진입점
-├ _e2e_batch_eval.py           # 배치 POC 진입점
-├ _multi_breakdown.py          # per-SKU 평가 분석
+├ _e2e_batch_eval.py           # CLI 재실행 진입점 (단일 SKU)
+├ _multi_breakdown.py          # run 결과 per-SKU 평가 분석 (다중 SKU 시 유용)
 │
 ├ src/
 │   ├ config.py                # 경로·env var 설정
