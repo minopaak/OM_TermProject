@@ -54,8 +54,17 @@ Python 3.11+ · uv · Windows PowerShell 기준. macOS / Linux 도 동일 명령
 
 ## M5 데이터 준비
 
-Kaggle [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
-에서 아래 3개 파일을 다운받아 `data/raw/` 에 둔다:
+### 빠른 시작 (Demo · 권장)
+
+리포지토리에 단일 SKU `FOODS_3_295_CA_1` 의 데이터·캐시·예시 run 이 이미 들어있다
+(`data/demo/`, `data/models/`, `data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/`).
+별도 다운로드 없이 바로 앱·배치 실행 가능. `src/config.py` 가 `data/` 의 풀데이터가
+없으면 `data/demo/` 로 자동 fallback.
+
+### 전체 데이터셋 (선택)
+
+전체 30,490 SKU 로 돌리려면 Kaggle [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
+에서 아래 3개 파일을 다운받아 `data/raw/` 에 두고:
 
 - `sales_train_evaluation.csv`
 - `calendar.csv`
@@ -71,6 +80,8 @@ Kaggle [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-foreca
 - `data/knowledge_base.duckdb` — `sales_train`, `calendar`, `sell_prices`, `sku_metadata`
 - `data/test_set.parquet` — 2016-01-01 ~ 2016-05-22 held-out actual
 - `data/calendar.parquet`
+
+`data/` 에 풀데이터가 생기면 `data/demo/` 보다 우선 사용된다.
 
 ---
 

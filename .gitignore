@@ -24,13 +24,15 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (M5 raw + derived)
+# Data (M5 raw + derived) — excluded by default
 data/raw/*
 !data/raw/.gitkeep
 data/*.duckdb
 data/*.parquet
-data/runs/
-data/models/
+data/runs/*
+data/models/*
+data/models/lstm_flat/*
+data/models/arima/*
 
 # IDE
 .vscode/
@@ -48,8 +50,19 @@ logs/
 CLAUDE.md
 .claude/
 
-# Models
-models/
-*.pkl
+# Models (general)
 *.joblib
 *.txt.model
+
+# ──────────────────────────────────────────────────────────────────
+# Demo subset (single-SKU FOODS_3_295_CA_1) — committed for quick start
+# (must come AFTER all general excludes — last match wins in gitignore)
+# ──────────────────────────────────────────────────────────────────
+!data/demo/
+!data/demo/**
+!data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/
+!data/runs/poc_FOODS_3_295_CA_1_v54_lstm_dow/**
+!data/models/lstm_flat/
+!data/models/arima/
+!data/models/lstm_flat/FOODS_3_295_CA_1.pt
+!data/models/arima/FOODS_3_295_CA_1.pkl

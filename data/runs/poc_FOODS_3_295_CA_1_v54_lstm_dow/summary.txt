@@ -1,0 +1,5 @@
+run_id: poc_FOODS_3_295_CA_1_v54_lstm_dow
+cases: 1 (success 1, failed 0)
+total elapsed: 35.0s
+total cost: $0.0275
+avg cost/sku: $0.0275

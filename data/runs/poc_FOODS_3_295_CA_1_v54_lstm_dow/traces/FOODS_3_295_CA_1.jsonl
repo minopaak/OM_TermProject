@@ -1,0 +1,4 @@
+{"run_id": "poc_FOODS_3_295_CA_1_v54_lstm_dow__FOODS_3_295_CA_1", "agent": "timeseries_analyst", "type": "llm_call", "model": "gpt-4o-mini-2024-07-18", "latency_s": 7.198, "prompt_tokens": 3513, "completion_tokens": 366, "cost_usd": 0.000747}
+{"run_id": "poc_FOODS_3_295_CA_1_v54_lstm_dow__FOODS_3_295_CA_1", "agent": "timeseries_analyst", "type": "llm_call", "model": "gpt-4o-mini-2024-07-18", "latency_s": 7.493, "prompt_tokens": 3656, "completion_tokens": 568, "cost_usd": 0.000889}
+{"run_id": "poc_FOODS_3_295_CA_1_v54_lstm_dow__FOODS_3_295_CA_1", "agent": "timeseries_analyst", "type": "llm_call", "model": "gpt-4o-mini-2024-07-18", "latency_s": 11.726, "prompt_tokens": 17237, "completion_tokens": 767, "cost_usd": 0.003046}
+{"run_id": "poc_FOODS_3_295_CA_1_v54_lstm_dow__FOODS_3_295_CA_1", "agent": "report_writer", "type": "llm_call", "model": "gpt-4o-2024-08-06", "latency_s": 5.696, "prompt_tokens": 5097, "completion_tokens": 1003, "cost_usd": 0.022773}

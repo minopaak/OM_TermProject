@@ -1,0 +1,27 @@
+=== poc_FOODS_3_295_CA_1_v54_lstm_dow 평가 ===
+n_skus: 1
+actual_total:   694
+baseline_total: 436
+final_total:    490
+
+avg_baseline_mae:  10.894
+avg_final_mae:     9.052
+avg_fva_mae:       +1.843  (양수=개선)
+
+avg_baseline_smape: 49.16%
+avg_final_smape:    41.57%
+avg_fva_smape:      +7.59%p  (양수=개선)
+
+SKU 개선:    1 / 1
+SKU 악화:    0 / 1
+SKU 변화없음: 0 / 1
+
+=== 이벤트일 (5일 in 평가) ===
+avg_event_baseline_mae: 16.436
+avg_event_final_mae:    15.050
+avg_event_fva_mae:      +1.386
+
+=== 비-이벤트일 (23일 in 평가) ===
+avg_nonevent_baseline_mae: 9.689
+avg_nonevent_final_mae:    7.747
+avg_nonevent_fva_mae:      +1.942
