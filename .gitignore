@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# uv
+.uv/
+
+# Env / secrets
+.env
+.env.local
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (M5 raw + derived)
+data/raw/*
+!data/raw/.gitkeep
+data/*.duckdb
+data/*.parquet
+data/runs/
+data/models/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Claude Code (internal — not for public repo)
+CLAUDE.md
+.claude/
+
+# Models
+models/
+*.pkl
+*.joblib
+*.txt.model
